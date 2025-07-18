@@ -1,8 +1,10 @@
+// OverviewModal component displays a modal with a visual grid (work in progress).
 import { GradientGrid } from "./gradient-grid";
 
 export const OverviewModal = () => {
   return (
     <>
+      {/* Button to open the modal */}
       <button
         className="btn btn-outline-info"
         data-bs-toggle="modal"
@@ -10,6 +12,7 @@ export const OverviewModal = () => {
       >
         Goal Overview (WIP)
       </button>
+      {/* Modal structure using Bootstrap classes */}
       <div
         className="modal fade"
         id="overviewModal"
@@ -31,6 +34,7 @@ export const OverviewModal = () => {
               ></button>
             </div>
             <div className="modal-body">
+              {/* Visual grid inside the modal */}
               <GradientGrid />
             </div>
             <div className="modal-footer">

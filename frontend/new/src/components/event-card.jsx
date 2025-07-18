@@ -1,7 +1,9 @@
+// EventCard component displays a single sports event with odds and a modal button.
 import { useMemo } from "react";
 import { OverviewModal } from "./overview-modal";
 
 export const EventCard = ({ event, bgColor }) => {
+  // Format the event date for display
   const formattedDate = useMemo(
     () =>
       new Intl.DateTimeFormat("en-GB", {
@@ -19,10 +21,13 @@ export const EventCard = ({ event, bgColor }) => {
             <h5>
               {event.details.teamA} vs {event.details.teamB}
             </h5>
+            {/* Button to open the overview modal */}
             <OverviewModal />
           </div>
+          {/* Display formatted date */}
           <p className="text-muted">{formattedDate}</p>
           <div className="d-flex justify-content-around mt-3">
+            {/* Odds buttons */}
             <button className="btn btn-outline-primary">
               1 ({event.odds.teamAWin})
             </button>

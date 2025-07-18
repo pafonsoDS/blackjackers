@@ -1,3 +1,4 @@
+// SortDropdown component for selecting how to sort the event list.
 const sortOptions = [
   { value: "", label: "Default" },
   { value: "teamA", label: "Team A" },
@@ -7,6 +8,7 @@ const sortOptions = [
 
 export const SortDropdown = ({ sortKey, onChange }) => (
   <div className="dropdown">
+    {/* Dropdown button shows current sort option */}
     <button
       className="btn btn-secondary dropdown-toggle"
       type="button"
@@ -15,6 +17,7 @@ export const SortDropdown = ({ sortKey, onChange }) => (
       Sort by {sortOptions.find((o) => o.value === sortKey)?.label || "Default"}
     </button>
     <ul className="dropdown-menu">
+      {/* List all sort options */}
       {sortOptions.map(({ value, label }) => (
         <li key={value}>
           <button

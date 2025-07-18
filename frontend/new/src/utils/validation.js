@@ -1,3 +1,5 @@
+// Utility function to filter and return only valid events.
+// An event is valid if it has an ID, both team names, and a start date.
 export const getValidEvents = (events) => {
   if (!Array.isArray(events)) {
     return [];
