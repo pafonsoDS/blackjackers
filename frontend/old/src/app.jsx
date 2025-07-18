@@ -1,3 +1,5 @@
+// Main App component for the frontend React project.
+// Handles fetching, filtering, sorting, and displaying sports events.
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { SortDropdown } from "./components/sort-dropdown";
 import { EventCard } from "./components/event-card";
@@ -7,13 +9,15 @@ import { getValidEvents } from "./utils/validation";
 import "./app.css";
 
 const App = () => {
-  const [events, setEvents] = useState([]);
-  const [sortKey, setSortKey] = useState("");
-  const [bgColor, setBgColor] = useState("#ffffff");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [query, setQuery] = useState("");
+  // State variables
+  const [events, setEvents] = useState([]); // All events
+  const [sortKey, setSortKey] = useState(""); // Current sort key
+  const [bgColor, setBgColor] = useState("#ffffff"); // Card background color
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
+  const [query, setQuery] = useState(""); // Search query
 
+  // Fetch events from the API and filter for valid events
   const fetchEvents = useCallback(async () => {
     try {
       const res = await fetch("/api/events");
@@ -25,10 +29,12 @@ const App = () => {
     }
   }, []);
 
+  // Fetch events on mount and when sortKey changes
   useEffect(() => {
     fetchEvents();
   }, [fetchEvents, sortKey]);
 
+  // Compute the displayed events based on search query and sorting
   const displayed = useMemo(() => {
     const q = query.toLowerCase().trim();
 

@@ -1,31 +1,36 @@
 {
-  "name": "blip-hackathon-2025",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  // Project metadata and configuration for the frontend React app
+  "name": "blip-hackathon-2025", // Project name
+  "private": true, // Not intended for publishing
+  "version": "0.0.0", // Initial version
+  "type": "module", // Use ES modules
   "scripts": {
-    "start": "vite --open",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "prettier": "prettier . --write"
+    // Common npm scripts for development
+    "start": "vite --open", // Start dev server and open browser
+    "dev": "vite", // Start dev server
+    "build": "vite build", // Build for production
+    "preview": "vite preview", // Preview production build
+    "prettier": "prettier . --write" // Format code
   },
   "dependencies": {
-    "bootstrap": "^5.3.7",
-    "bootstrap-icons": "^1.13.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    // Runtime dependencies
+    "bootstrap": "^5.3.7", // CSS framework
+    "bootstrap-icons": "^1.13.1", // Icon set
+    "react": "^19.1.0", // React library
+    "react-dom": "^19.1.0" // React DOM bindings
   },
   "devDependencies": {
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.6.0",
-    "globals": "^16.2.0",
-    "msw": "^2.10.2",
-    "prettier": "3.6.1",
-    "vite": "^7.0.0"
+    // Development-only dependencies
+    "@types/react": "^19.1.8", // TypeScript types for React
+    "@types/react-dom": "^19.1.6", // TypeScript types for React DOM
+    "@vitejs/plugin-react": "^4.6.0", // Vite plugin for React
+    "globals": "^16.2.0", // Global variables utility
+    "msw": "^2.10.2", // Mock Service Worker for API mocking
+    "prettier": "3.6.1", // Code formatter
+    "vite": "^7.0.0" // Vite build tool
   },
   "msw": {
+    // MSW configuration for worker location
     "workerDirectory": [
       "public"
     ]
