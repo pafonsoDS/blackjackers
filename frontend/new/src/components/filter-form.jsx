@@ -3,8 +3,13 @@ import { useRef } from "react";
 export const FilterForm = ({ onSubmit }) => {
   const inputRef = useRef();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(inputRef);
+  };
+
   return (
-    <form onSubmit={() => onSubmit(inputRef)} className="d-flex">
+    <form onSubmit={handleSubmit} className="d-flex">
       <div className="row g-2 align-items-center">
         <div className="col">
           <input

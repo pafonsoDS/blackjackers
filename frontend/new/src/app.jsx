@@ -15,6 +15,7 @@ const App = () => {
   const [query, setQuery] = useState("");
 
   const fetchEvents = useCallback(async () => {
+    setLoading(true);
     try {
       const res = await fetch("/api/events");
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -22,12 +23,14 @@ const App = () => {
       setEvents(getValidEvents(data));
     } catch (err) {
       setError(err.message);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
   useEffect(() => {
     fetchEvents();
-  }, [fetchEvents, sortKey]);
+  }, [fetchEvents]);
 
   const displayed = useMemo(() => {
     const q = query.toLowerCase().trim();
@@ -50,10 +53,6 @@ const App = () => {
   const handleFormSubmit = (inputRef) => {
     setQuery(inputRef.current.value);
   };
-
-  useEffect(() => {
-    fetchEvents();
-  }, [fetchEvents]);
 
   if (loading) {
     return <div className="text-center">Loading events…</div>;

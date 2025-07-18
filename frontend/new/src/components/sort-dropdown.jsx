@@ -20,7 +20,7 @@ export const SortDropdown = ({ sortKey, onChange }) => (
           <button
             className="dropdown-item"
             type="button"
-            onChange={() => onChange(value)}
+            onClick={() => onChange(value)}
           >
             {label}
           </button>
