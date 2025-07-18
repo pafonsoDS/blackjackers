@@ -1,0 +1,33 @@
+{
+  "name": "blip-hackathon-2025",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite --open",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prettier": "prettier . --write"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.7",
+    "bootstrap-icons": "^1.13.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "globals": "^16.2.0",
+    "msw": "^2.10.2",
+    "prettier": "3.6.1",
+    "vite": "^7.0.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+.gradient-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.gradient-cell {
+  width: 100%;
+  padding-bottom: 100%;
+}
