@@ -1,0 +1,2 @@
+1) wget https://ev1ld0m41n.com/xor_ransom.py was used to get the encrypting script
+2) the data was xor encrypted with key 0xF3. therefore if we simply read each byte, and reverse with the given key we should be able to decrypt the data!
