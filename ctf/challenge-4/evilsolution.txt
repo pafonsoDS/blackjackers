@@ -1,0 +1,6 @@
+This took me more than an hour for something so "simple"
+In qrcode.png's metadata we can see in the comments that the flag has been removed for security reasons.
+After applying different stenography techniques, I had the brilliant idea to check the github commits....
+And indeed there was an old qrcode.png WITH the flag in the metadata.... very nice :)
+
+(probably the creator's idea was to get something anti-AI solvable)
