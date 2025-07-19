@@ -1,8 +1,9 @@
 // EventCard component displays a single sports event with odds and a modal button.
-import { useMemo } from "react";
+import { useMemo, memo } from "react"; // Import memo
 import { OverviewModal } from "./overview-modal";
 
-export const EventCard = ({ event, bgColor }) => {
+// Define the component. Note that `bgColor` is no longer a prop.
+const EventCardComponent = ({ event }) => {
   // Format the event date for display
   const formattedDate = useMemo(
     () =>
@@ -15,7 +16,11 @@ export const EventCard = ({ event, bgColor }) => {
 
   return (
     <>
-      <div className="card mb-3" style={{ backgroundColor: bgColor }}>
+      {/* 
+        The style now uses the CSS variable. The browser handles updating this, 
+        not React. This is the key to the performance gain.
+      */}
+      <div className="card mb-3" style={{ backgroundColor: 'var(--card-background-color)' }}>
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-start">
             <h5>
@@ -43,3 +48,7 @@ export const EventCard = ({ event, bgColor }) => {
     </>
   );
 };
+
+// Wrap the component in memo before exporting. This prevents re-renders when
+// parent state changes, since this component no longer depends on that state.
+export const EventCard = memo(EventCardComponent);

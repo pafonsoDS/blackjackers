@@ -1,0 +1,23 @@
+- (asp) loading state not managed well (not set to False after loading, leads to Loading Events forever) || src/app.jsx
+- (asp) useEffect WHEN resorted, leading to huge performance issues, especially for big data
+- (asp) useEffect called multiple times (duplicates)
+
+- (tvl): the data as key eventID, but initially we were checki  ng for eventId -> error! [validation.js]
+
+- (sp): sorting in utils is badly defined! sorting with "-", and of course this is undefined between strings. we just redefined comparing teamA and teamB alphabetically [src/utils/sorting.js]
+
+- (ffr): submitting filter form caused the entire page to reload, preventing the filter from being applied, so an e.preventDefault() call was added to the submission handler to stop the default page reload behavior [src/components/filter-form.jsx]
+
+- (dp): The onChange event is meant for form inputs like text fields (fires when value changed) but <button> doesnt have a value to change, so onChange is never triggered. The correct event for a button is onClick, which fires when the button is clicked. The fix was simply changing onChange to onClick to make the sort buttons respond to user clicks. [src/components/sort-dropdown.js]
+
+###
+useEffect: after finishing rendering the component for first time, fetch the list of events from the server.
+###
+
+asp: app state problem
+tvl: typo validation logic
+sp: sorting problem
+ffr: filter form reload problem
+dp: dropdown problem
+
+#tests with fps:

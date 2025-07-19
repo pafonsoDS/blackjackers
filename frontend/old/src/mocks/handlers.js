@@ -4,6 +4,6 @@ import eventsBigData from "./data/events-big-data";
 
 export const handlers = [
   http.get("/api/events", () => {
-    return HttpResponse.json(events, { status: 200 });
+    return HttpResponse.json(eventsBigData, { status: 200 });
   }),
 ];

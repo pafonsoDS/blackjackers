@@ -7,6 +7,6 @@ import eventsBigData from "./data/events-big-data.js";
 export const handlers = [
   // Intercept GET requests to /api/events and return mock events data
   http.get("/api/events", () => {
-    return HttpResponse.json(events, { status: 200 });
+    return HttpResponse.json(eventsBigData, { status: 200 });
   }),
 ];

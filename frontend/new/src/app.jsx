@@ -1,6 +1,6 @@
 // Main App component for the frontend React project.
-// Handles fetching, filtering, sorting, and displaying sports events.
-import { useEffect, useState, useMemo, useCallback } from "react";
+// Handles fetching, filtering,sorting, and displaying sports events.
+import { useEffect, useState, useMemo, useCallback, useRef } from "react";
 import { SortDropdown } from "./components/sort-dropdown";
 import { EventCard } from "./components/event-card";
 import { FilterForm } from "./components/filter-form";
@@ -16,6 +16,18 @@ const App = () => {
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [query, setQuery] = useState(""); // Search query
+  
+  // Create a ref for the main container to apply CSS variables
+  const containerRef = useRef(null);
+
+  // When bgColor state changes, update the CSS variable.
+  // This ensures the color is correct on initial load.
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.style.setProperty('--card-background-color', bgColor);
+    }
+  }, [bgColor]);
+
 
   // Fetch events from the API and filter for valid events
   const fetchEvents = useCallback(async () => {
@@ -55,6 +67,18 @@ const App = () => {
 
     return list;
   }, [events, query, sortKey]);
+  
+  // This function updates the CSS variable directly, bypassing React renders
+  const handleColorChange = (e) => {
+    if (containerRef.current) {
+      containerRef.current.style.setProperty('--card-background-color', e.target.value);
+    }
+  };
+  
+  // This function updates the React state, solidifying the color choice
+  const handleColorCommit = (e) => {
+    setBgColor(e.target.value);
+  };
 
   const handleFormSubmit = (inputRef) => {
     setQuery(inputRef.current.value);
@@ -73,7 +97,12 @@ const App = () => {
   }
 
   return (
-    <div className="container py-4">
+    // Add the ref and the initial CSS variable to our main container
+    <div 
+      ref={containerRef} 
+      className="container py-4" 
+      style={{'--card-background-color': bgColor}}
+    >
       <h1 className="text-center mb-4">🏟️ Betting Home Page</h1>
 
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -83,14 +112,18 @@ const App = () => {
           Background:{" "}
           <input
             type="color"
-            value={bgColor}
-            onChange={(e) => setBgColor(e.target.value)}
+            defaultValue={bgColor}
+            // `onChange` gives live preview without re-rendering React
+            onChange={handleColorChange}
+            // `onBlur` or `onMouseUp` could also work to commit the state
+            onInput={handleColorCommit}
           />
         </label>
       </div>
 
       {displayed.map((evt) => (
-        <EventCard key={evt.eventID} event={evt} bgColor={bgColor} />
+        // IMPORTANT: We no longer pass the bgColor prop
+        <EventCard key={evt.eventID} event={evt} />
       ))}
     </div>
   );
